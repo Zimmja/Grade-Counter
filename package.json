@@ -1,0 +1,23 @@
+{
+  "name": "03dec21",
+  "version": "1.0.0",
+  "description": "- School reports company - Comma-separated values: test results from schools (each val in string, one grade = one student) - Green, Green, Amber (e.g.) = Green 2, Amber 1 - \"Green: 2\\nAmber: 1\" - \"Green: 1\\nRed: 1\\nUncounted: 2\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zimmja/Grade-Counter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zimmja/Grade-Counter/issues"
+  },
+  "homepage": "https://github.com/Zimmja/Grade-Counter#readme",
+  "dependencies": {
+    "jest": "^27.4.3"
+  }
+}

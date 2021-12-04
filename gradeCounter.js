@@ -1,7 +1,8 @@
 const createReportsArr = (reportsString) => {
   let grades = createGradesArr(reportsString);
   let formattedGrades = formatGrades(grades);
-  let returnVal = formattedGrades.join("");
+  let filteredGrades = formattedGrades.filter((grade) => grade != [""]);
+  let returnVal = filteredGrades.join(", ");
   console.log(`Return: :${returnVal}:`);
   return returnVal;
 };

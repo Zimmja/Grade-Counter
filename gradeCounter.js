@@ -1,22 +1,23 @@
 const createReportsArr = (reportsString) => {
-  grades = createGradesArr(reportsString);
-  // console.log(grades);
-  checkedGrades = checkGrades(grades);
-  // console.log(checkedGrades);
-  gSum = gradeCount(checkedGrades, "Green");
-  aSum = gradeCount(checkedGrades, "Amber");
-  rSum = gradeCount(checkedGrades, "Red");
-  uSum = gradeCount(checkedGrades, "Uncounted");
-  // console.log(greenCount);
-  returnVal = `${printGrad("Green", gSum)}${printGrad(
-    "Amber",
-    aSum
-  )}${printGrad("Red", rSum)}${printGrad("Uncounted", uSum)}`;
-  console.log(`Return :${returnVal}:`);
+  let grades = createGradesArr(reportsString);
+  let checkedGrades = checkGrades(grades);
+  let formattedGrades = formatGrades(checkedGrades);
+  let returnVal = formattedGrades.join("");
+  console.log(`Return: :${returnVal}:`);
   return returnVal;
 };
 
-const printGrad = (color, colCount) => {
+formatGrades = (checkedGrades) => {
+  let formattedGrades = [];
+  formattedGrades.push(printGrad("Green", checkedGrades));
+  formattedGrades.push(printGrad("Amber", checkedGrades));
+  formattedGrades.push(printGrad("Red", checkedGrades));
+  formattedGrades.push(printGrad("Uncounted", checkedGrades));
+  return formattedGrades;
+};
+
+const printGrad = (color, gradesVal) => {
+  let colCount = gradeCount(gradesVal, color);
   if (colCount === 0) return "";
   return `${color}: ${colCount}`;
 };

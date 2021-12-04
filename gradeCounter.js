@@ -7,7 +7,11 @@ const createReportsArr = (reportsString) => {
   return returnVal;
 };
 
-const createGradesArr = (repStr) => repStr.split(", ");
+const createGradesArr = (repStr) => {
+  let spNorm = repStr.split(", ");
+  let spEdge = spNorm.map((colArr) => colArr.split(","));
+  return spEdge.flat();
+};
 
 const formatGrades = (grades) => {
   let checkedGrades = checkGrades(grades);
@@ -35,4 +39,4 @@ const filterGrades = (grades) => grades.filter((grade) => grade != [""]);
 
 module.exports = createReportsArr;
 
-createReportsArr("Green, Green");
+createReportsArr("Green, Green,Amber");

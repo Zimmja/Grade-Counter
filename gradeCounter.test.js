@@ -32,3 +32,7 @@ test("Correctly returns more complicated combinations", () => {
     createReportsArr("Amber, Red, Blue, Amber, Red, ed, 7, Red, Amber, Amer")
   ).toEqual("Amber: 3\nRed: 3\nUncounted: 4");
 });
+
+test("Works correctly if a comma is passed without a space", () => {
+  expect(createReportsArr("Green, Green,Amber")).toEqual("Green: 2\nAmber: 1");
+});

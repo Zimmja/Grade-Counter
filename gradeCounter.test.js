@@ -21,5 +21,14 @@ test("If grades === 'Red, Red, Red, Red' then return 'Red: 4'", () => {
 });
 
 test("If grades === 'Green, Green, Amber' then return 'Green: 2, Amber: 1'", () => {
-  expect(createReportsArr("Green, Green, Amber")).toEqual("Green: 2, Amber: 1");
+  expect(createReportsArr("Green, Green, Amber")).toEqual("Green: 2\nAmber: 1");
+});
+
+test("Correctly returns more complicated combinations", () => {
+  expect(
+    createReportsArr("Amber, Red, Blue, Amber, Green, Red, Red, Amber, Amer")
+  ).toEqual("Green: 1\nAmber: 3\nRed: 3\nUncounted: 2");
+  expect(
+    createReportsArr("Amber, Red, Blue, Amber, Red, ed, 7, Red, Amber, Amer")
+  ).toEqual("Amber: 3\nRed: 3\nUncounted: 4");
 });

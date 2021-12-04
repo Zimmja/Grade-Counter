@@ -1,19 +1,16 @@
 const createReportsArr = (reportsString) => {
   let grades = createGradesArr(reportsString);
-  let checkedGrades = checkGrades(grades);
-  let formattedGrades = formatGrades(checkedGrades);
+  let formattedGrades = formatGrades(grades);
   let returnVal = formattedGrades.join("");
   console.log(`Return: :${returnVal}:`);
   return returnVal;
 };
 
-formatGrades = (checkedGrades) => {
-  let formattedGrades = [];
-  formattedGrades.push(printGrad("Green", checkedGrades));
-  formattedGrades.push(printGrad("Amber", checkedGrades));
-  formattedGrades.push(printGrad("Red", checkedGrades));
-  formattedGrades.push(printGrad("Uncounted", checkedGrades));
-  return formattedGrades;
+formatGrades = (grades) => {
+  let checkedGrades = checkGrades(grades);
+  return ["Green", "Amber", "Red", "Uncounted"].map((color) =>
+    printGrad(color, checkedGrades)
+  );
 };
 
 const printGrad = (color, gradesVal) => {

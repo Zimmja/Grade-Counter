@@ -1,16 +1,46 @@
-const createReportsArray = (reportsString) => {
-  let reportsArr = reportsString.split(", ");
-  // console.log(splitByCom);
-  return reportsArr;
+const createReportsArr = (reportsString) => {
+  grades = createGradesArr(reportsString);
+  // console.log(grades);
+  checkedGrades = checkGrades(grades);
+  // console.log(checkedGrades);
+  gSum = gradeCount(checkedGrades, "Green");
+  aSum = gradeCount(checkedGrades, "Amber");
+  rSum = gradeCount(checkedGrades, "Red");
+  uSum = gradeCount(checkedGrades, "Uncounted");
+  // console.log(greenCount);
+  returnVal = `${printGrad("Green", gSum)}${printGrad(
+    "Amber",
+    aSum
+  )}${printGrad("Red", rSum)}${printGrad("Uncounted", uSum)}`;
+  console.log(`Return :${returnVal}:`);
+  return returnVal;
 };
 
-const gradeCount = (reportsArr) => {};
+const printGrad = (color, colCount) => {
+  if (colCount === 0) return "";
+  return `${color}: ${colCount}`;
+};
 
-module.exports = { primary: createReportsArray, secondary: gradeCount };
+const checkGrades = (grades) => {
+  return grades.map((grade) => checkValidGrade(grade));
+};
 
-// - FUNCTION, input: reportsString
-// - Green, Green, Amber, Yellow, Gren => reportsArr ["Green", "Green", "Amber", "Uncounted", "Uncounted"]
-// - Be aware: difficulty in separating based on "," or ", "
+const checkValidGrade = (grade) => {
+  if (["Green", "Amber", "Red"].includes(grade)) return grade;
+  return "Uncounted";
+};
 
-// - FUNCTION, input: reportsArr
-// - ["Green", "Green", "Amber"] => (counts each element) countArr [2, 1, 0, 0]
+const createGradesArr = (repStr) => repStr.split(", ");
+
+const gradeCount = (grades, color) => {
+  let gradeMap = grades.map((grade) => {
+    return grade === color ? 1 : 0;
+  });
+  return arrSum(gradeMap);
+};
+
+const arrSum = (arr) => arr.reduce((x, y) => x + y);
+
+module.exports = createReportsArr;
+
+createReportsArr("Green, Green");

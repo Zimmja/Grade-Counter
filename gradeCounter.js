@@ -2,9 +2,7 @@ const createReportsArr = (reportsString) => {
   let grades = createGradesArr(reportsString);
   let formattedGrades = formatGrades(grades);
   let filteredGrades = filterGrades(formattedGrades);
-  let returnVal = filteredGrades.join("\n");
-  console.log(`Return: :${returnVal}:`);
-  return returnVal;
+  return filteredGrades.join("\n");
 };
 
 const createGradesArr = (repStr) => {
@@ -22,10 +20,8 @@ const formatGrades = (grades) => {
 
 const checkGrades = (grades) => grades.map((grade) => checkValidGrade(grade));
 
-const checkValidGrade = (grade) => {
-  if (["Green", "Amber", "Red"].includes(grade)) return grade;
-  return "Uncounted";
-};
+const checkValidGrade = (grade) =>
+  ["Green", "Amber", "Red"].includes(grade) ? grade : "Uncounted";
 
 const printGrad = (color, gradesVal) => {
   let colCount = gradeCount(gradesVal, color);
@@ -39,4 +35,4 @@ const filterGrades = (grades) => grades.filter((grade) => grade != [""]);
 
 module.exports = createReportsArr;
 
-createReportsArr("Green, Green,Amber");
+// createReportsArr("Green, Green,Amber");
